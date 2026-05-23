@@ -18,6 +18,7 @@
 
 param(
     [int]$InactiveDays = 90,
+    [int]$StalePasswordDays = 180,
     [string]$OutputCsv = ""
 )
 
@@ -34,8 +35,19 @@ Write-Host "Active Directory User Audit" -ForegroundColor Cyan
 Write-Host "Inactive threshold: $InactiveDays day(s)"
 Write-Host ""
 
-$users = Get-ADUser -Filter * -Properties Enabled, LockedOut, LastLogonDate, PasswordLastSet, PasswordNeverExpires |
-    Select-Object SamAccountName, Enabled, LockedOut, LastLogonDate, PasswordLastSet, PasswordNeverExpires
+$users = Get-ADUser -Filter * -Properties Enabled, LockedOut, LastLogonDate, PasswordLastSet, PasswordNeverExpires, AdminCount, ServicePrincipalName, DoesNotRequirePreAuth |
+    Select-Object SamAccountName, Enabled, LockedOut, LastLogonDate, PasswordLastSet, PasswordNeverExpires, AdminCount, ServicePrincipalName, DoesNotRequirePreAuth,
+        @{Name="RiskNotes";Expression={
+            $notes = @()
+            if ($_.LockedOut) { $notes += "Locked account" }
+            if ($_.PasswordNeverExpires) { $notes += "Password never expires" }
+            if ($_.AdminCount -eq 1) { $notes += "AdminCount=1 privileged history" }
+            if ($_.ServicePrincipalName) { $notes += "SPN-bearing account" }
+            if ($_.DoesNotRequirePreAuth) { $notes += "Kerberos pre-auth disabled" }
+            if (-not $_.LastLogonDate -or $_.LastLogonDate -lt $cutoff) { $notes += "Inactive account" }
+            if ($_.PasswordLastSet -and $_.PasswordLastSet -lt (Get-Date).AddDays(-$StalePasswordDays)) { $notes += "Stale password" }
+            $notes -join "; "
+        }}
 
 $summary = [PSCustomObject]@{
     TotalUsers = $users.Count
@@ -43,6 +55,9 @@ $summary = [PSCustomObject]@{
     LockedUsers = ($users | Where-Object { $_.LockedOut }).Count
     InactiveUsers = ($users | Where-Object { -not $_.LastLogonDate -or $_.LastLogonDate -lt $cutoff }).Count
     PasswordNeverExpires = ($users | Where-Object { $_.PasswordNeverExpires }).Count
+    SPNUsers = ($users | Where-Object { $_.ServicePrincipalName }).Count
+    PreAuthDisabled = ($users | Where-Object { $_.DoesNotRequirePreAuth }).Count
+    PrivilegedHistory = ($users | Where-Object { $_.AdminCount -eq 1 }).Count
 }
 
 Write-Host "==== Summary ====" -ForegroundColor Yellow
@@ -63,6 +78,12 @@ Write-Host "==== Password Never Expires ====" -ForegroundColor Yellow
 $users | Where-Object { $_.PasswordNeverExpires } |
     Select-Object SamAccountName, Enabled, LastLogonDate |
     Format-Table -AutoSize
+
+Write-Host "==== High-Value Review Queue ====" -ForegroundColor Yellow
+$users | Where-Object { $_.RiskNotes } |
+    Select-Object SamAccountName, Enabled, LastLogonDate, PasswordLastSet, RiskNotes |
+    Sort-Object SamAccountName |
+    Format-Table -Wrap -AutoSize
 
 if ($OutputCsv) {
     $users | Export-Csv -Path $OutputCsv -NoTypeInformation

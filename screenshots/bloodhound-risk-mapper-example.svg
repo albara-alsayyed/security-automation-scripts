@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="620" viewBox="0 0 1100 620">
+  <rect width="1100" height="620" fill="#050505"/>
+  <rect x="24" y="24" width="1052" height="572" fill="none" stroke="#8b0014" stroke-width="3"/>
+  <rect x="24" y="24" width="1052" height="64" fill="#120006"/>
+  <circle cx="57" cy="56" r="9" fill="#ff1e3c"/>
+  <circle cx="87" cy="56" r="9" fill="#ffffff"/>
+  <circle cx="117" cy="56" r="9" fill="#8b0014"/>
+  <text x="150" y="62" fill="#ffffff" font-size="30" font-family="Consolas, monospace">$ bloodhound_risk_mapper.py</text>
+<text x="64" y="140" fill="#ff4d63" font-size="22" font-family="Consolas, monospace"># BloodHound Defensive Risk Map</text>
+<text x="64" y="192" fill="#ff4d63" font-size="22" font-family="Consolas, monospace">Risk 100 | DCSync | restrict replication rights</text>
+<text x="64" y="244" fill="#ff4d63" font-size="22" font-family="Consolas, monospace">Risk 95  | WriteDacl | remediate excessive ACLs</text>
+<text x="64" y="296" fill="#ff4d63" font-size="22" font-family="Consolas, monospace">Risk 85  | ReadLAPSPassword | restrict readers</text>
+<text x="64" y="348" fill="#d7d7d7" font-size="22" font-family="Consolas, monospace">No collection or attack execution</text>
+<text x="64" y="548" fill="#a9a9ad" font-size="22" font-family="Consolas, monospace">Authorized lab / defensive research use only</text>
+</svg>

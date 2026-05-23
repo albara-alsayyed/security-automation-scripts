@@ -111,9 +111,6 @@ The matrix maps common protocols, techniques, tools, defensive signals, and hard
 [+] Wrote markdown feasibility report: attack-feasibility-report.md
 ```
 
-## Screenshots
-
-Screenshot-style examples are stored under `screenshots/` as SVG files so they render directly on GitHub.
 
 ## Safe Lab Disclaimer
 

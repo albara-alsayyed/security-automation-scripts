@@ -7,10 +7,9 @@
   <circle cx="117" cy="56" r="9" fill="#8b0014"/>
   <text x="150" y="62" fill="#ffffff" font-size="30" font-family="Consolas, monospace">$ ad_user_audit.ps1</text>
 <text x="64" y="140" fill="#d7d7d7" font-size="22" font-family="Consolas, monospace">Active Directory User Audit</text>
-<text x="64" y="192" fill="#ff4d63" font-size="22" font-family="Consolas, monospace">==== Summary ====</text>
-<text x="64" y="244" fill="#d7d7d7" font-size="22" font-family="Consolas, monospace">TotalUsers           : 42</text>
-<text x="64" y="296" fill="#d7d7d7" font-size="22" font-family="Consolas, monospace">EnabledUsers         : 38</text>
-<text x="64" y="348" fill="#d7d7d7" font-size="22" font-family="Consolas, monospace">LockedUsers          : 2</text>
-<text x="64" y="400" fill="#d7d7d7" font-size="22" font-family="Consolas, monospace">PasswordNeverExpires : 3</text>
-<text x="64" y="548" fill="#a9a9ad" font-size="22" font-family="Consolas, monospace">Authorized lab / defensive use only</text>
+<text x="64" y="192" fill="#d7d7d7" font-size="22" font-family="Consolas, monospace">SPNUsers             : 6</text>
+<text x="64" y="244" fill="#d7d7d7" font-size="22" font-family="Consolas, monospace">PreAuthDisabled      : 1</text>
+<text x="64" y="296" fill="#d7d7d7" font-size="22" font-family="Consolas, monospace">PrivilegedHistory    : 8</text>
+<text x="64" y="348" fill="#d7d7d7" font-size="22" font-family="Consolas, monospace">High-Value Review Queue generated</text>
+<text x="64" y="548" fill="#a9a9ad" font-size="22" font-family="Consolas, monospace">Authorized lab / defensive research use only</text>
 </svg>

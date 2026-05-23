@@ -64,7 +64,7 @@ Example output:
     /admin             8 hits
 ```
 
-Screenshot: `screenshots/log-parser-example.png`
+Screenshot: `screenshots/log-parser-example.svg`
 
 Safe lab disclaimer: Use only on logs you own or are authorized to review.
 
@@ -89,7 +89,7 @@ Example output:
 }
 ```
 
-Screenshot: `screenshots/ioc-extractor-example.png`
+Screenshot: `screenshots/ioc-extractor-example.svg`
 
 Safe lab disclaimer: Use only on files and investigation notes you own or are authorized to review.
 
@@ -110,7 +110,7 @@ Example output:
 [+] Wrote report: report.md
 ```
 
-Screenshot: `screenshots/nmap-report-example.png`
+Screenshot: `screenshots/nmap-report-example.svg`
 
 Safe lab disclaimer: Only scan networks and review scan data you are authorized to test.
 
@@ -134,7 +134,7 @@ Kernel: Linux lab 6.8.0 x86_64
 tcp LISTEN 0 128 0.0.0.0:22
 ```
 
-Screenshot: `screenshots/linux-enum-basic-example.png`
+Screenshot: `screenshots/linux-enum-basic-example.svg`
 
 Safe lab disclaimer: Run only on systems you own or administer with permission.
 
@@ -156,7 +156,7 @@ Linux Hardening Check
 [WARN] SSH password authentication is not explicitly disabled.
 ```
 
-Screenshot: `screenshots/linux-hardening-check-example.png`
+Screenshot: `screenshots/linux-hardening-check-example.svg`
 
 Safe lab disclaimer: Run only on Linux systems you own or are authorized to assess.
 
@@ -179,7 +179,7 @@ TimeCreated           ProviderName Id   Message
 2026-05-24 10:14:22   Microsoft... 4625 An account failed to log on.
 ```
 
-Screenshot: `screenshots/windows-event-checker-example.png`
+Screenshot: `screenshots/windows-event-checker-example.svg`
 
 Safe lab disclaimer: Run only on Windows systems you own or administer with permission.
 
@@ -204,7 +204,7 @@ InactiveUsers        : 7
 PasswordNeverExpires : 3
 ```
 
-Screenshot: `screenshots/ad-user-audit-example.png`
+Screenshot: `screenshots/ad-user-audit-example.svg`
 
 Safe lab disclaimer: Run only in domains where you have permission to audit users. This script does not collect passwords.
 
@@ -212,11 +212,11 @@ Safe lab disclaimer: Run only in domains where you have permission to audit user
 
 Add screenshots under `screenshots/` after running each script in your lab. Good screenshot ideas:
 
-- `screenshots/log-parser-example.png`
-- `screenshots/ioc-extractor-example.png`
-- `screenshots/nmap-report-example.png`
-- `screenshots/windows-event-checker-example.png`
-- `screenshots/linux-hardening-check-example.png`
+- `screenshots/log-parser-example.svg`
+- `screenshots/ioc-extractor-example.svg`
+- `screenshots/nmap-report-example.svg`
+- `screenshots/windows-event-checker-example.svg`
+- `screenshots/linux-hardening-check-example.svg`
 
 ## Safe Lab Disclaimer
 
